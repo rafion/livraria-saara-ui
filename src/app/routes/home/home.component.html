@@ -1,0 +1,21 @@
+<div fxLayout="row wrap" f1q xLayoutAlign="start center" style="padding: 2%">
+    <mat-grid-list cols="4" rowHeight="1:1">
+        <div *ngFor="let livro of livros" style="margin: 0.5%;">
+
+            <mat-card class="livro-card">
+
+                <img mat-card-image src={{livro.url_img}} alt="livro">
+                <mat-card-content>
+
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-title>{{livro.titulo}}</mat-card-title>
+                    <mat-card-subtitle>Autor: {{livro.autor}}</mat-card-subtitle>
+                </mat-card-footer>
+                <!--mat-card-actions align="end">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                </mat-card-actions-->
+            </mat-card>
+        </div>
+    </mat-grid-list>
+</div>
