@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './../theme/admin-layout/admin-layout.component';
+import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
@@ -12,8 +13,10 @@ const routes: Routes = [
         path: 'home', component: HomeComponent,
       },
       {
-        path: 'sessions', loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsModule),
-        data: { title: 'Sessions', titleI18n: 'Sessions' },
+        path: 'cart', component: CartComponent,
+      },
+      {
+        path: 'login', loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsModule),
       },
     ]
   },

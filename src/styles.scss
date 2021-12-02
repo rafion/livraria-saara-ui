@@ -3,7 +3,36 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.msg-error{
+  background-color:#d16767;
+  color: #fff;
+}
+.msg-success{
+  background-color: #45a164;
+  color: #fff;
+}
 
 .spacer {
     flex: 1 1 auto;
+  }
+
+  .w-full{
+    width: 100%;
+  }
+
+  .h-full{
+    height: 100%;
+  }
+
+  .form-field-full{
+    width: 100%;
+  }
+
+  .text-center{
+    text-align: center;
+  }
+
+  .m-b-24{
+    margin: 24px;
+    padding: 24px;
   }
