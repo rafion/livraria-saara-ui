@@ -1,21 +1,33 @@
-<div fxLayout="row wrap" f1q xLayoutAlign="start center" style="padding: 2%">
-    <mat-grid-list cols="4" rowHeight="1:1">
-        <div *ngFor="let livro of livros" style="margin: 0.5%;">
+<div class="home-container">
+    <div fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%">
 
-            <mat-card class="livro-card">
+        <ng-container *ngFor="let livro of livros" style="margin: 0.5%;">
 
-                <img mat-card-image src={{livro.url_img}} alt="livro">
-                <mat-card-content>
+            <mat-card class="mat-card" fxFlex="0 1 calc(15% - 11px)" fxFlex.lt-md="0 1 calc(50% - 11px)"
+                fxFlex.lt-sm="100%">
 
+                <mat-card-title class="mat-card-title">
+                    <div class="row">
+                        <p>
+                            <span style="font-size:0.9rem" fxFlex="80"
+                                fxLayoutAlign="start center">{{livro.titulo}}</span>
+                        </p>
+                    </div>
+                </mat-card-title>
+                <mat-card-content fxLayoutAlign="center center">
+                    <div>
+                        <img mat-card-image src={{livro.url_img}} alt="livro" class="card-image">
+                    </div>
                 </mat-card-content>
-                <mat-card-footer>
-                    <mat-card-title>{{livro.titulo}}</mat-card-title>
-                    <mat-card-subtitle>Autor: {{livro.autor}}</mat-card-subtitle>
-                </mat-card-footer>
-                <!--mat-card-actions align="end">
-                    <mat-icon>add_shopping_cart</mat-icon>
-                </mat-card-actions-->
+                <p style="font-size:0.7rem;">Autor: <span>{{livro.autor}}</span></p>
+
+                <span style="float:right;">
+                    <button matTooltip="Add carrinho" mat-icon-button>
+                        <mat-icon>add_shopping_cart</mat-icon>
+                    </button>
+                </span>
+
             </mat-card>
-        </div>
-    </mat-grid-list>
+        </ng-container>
+    </div>
 </div>

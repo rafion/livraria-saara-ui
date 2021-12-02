@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RoutesRoutingModule } from './routes-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SessionsModule } from './sessions/sessions.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { SessionsModule } from './sessions/sessions.module';
   imports: [
     CommonModule,
     SessionsModule,
+    FlexLayoutModule,
     RoutesRoutingModule,
     MaterialModule
 
