@@ -16,7 +16,7 @@ const routes: Routes = [
         path: 'cart', component: CartComponent,
       },
       {
-        path: 'login', loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsModule),
+        path: 'auth/login', loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsModule),
       },
     ]
   },

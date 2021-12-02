@@ -22,7 +22,7 @@
                 <p style="font-size:0.7rem;">Autor: <span>{{livro.autor}}</span></p>
 
                 <span style="float:right;">
-                    <button matTooltip="Add carrinho" mat-icon-button>
+                    <button matTooltip="Add carrinho" mat-icon-button (click)="addToCart(livro)">
                         <mat-icon>add_shopping_cart</mat-icon>
                     </button>
                 </span>

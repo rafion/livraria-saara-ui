@@ -5,18 +5,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     component: LoginComponent,
     children: [
       {
         path: 'login',
-        component: LoginComponent,
-        data: { title: 'Login', titleI18n: 'Login' },
+        component: LoginComponent
       },
       {
         path: 'register',
         component: RegisterComponent,
-        data: { title: 'Register', titleI18n: 'Register' },
       },
     ],
   },
