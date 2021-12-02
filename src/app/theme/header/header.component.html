@@ -1,12 +1,12 @@
 <mat-toolbar class="fix-nav" color="primary">
     <span class="logo">
-        <a routerLink=''>Livraria Saara</a>
+        <a routerLink='/home'>Livraria Saara</a>
     </span>
 
     <span class="spacer"></span>
     <mat-form-field>
         <mat-label>search</mat-label>
-        <input matInput placeholder="Placeholder">
+        <input matInput placeholder="search">
         <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 
@@ -14,7 +14,7 @@
     <span class="spacer"></span>
 
 
-    <button mat-icon-button matTooltip="Carrinho">
+    <button mat-icon-button matTooltip="Carrinho" routerLink="/cart">
         <mat-icon>shopping_cart</mat-icon>
     </button>
 
