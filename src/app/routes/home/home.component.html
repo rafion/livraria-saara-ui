@@ -21,11 +21,20 @@
                 </mat-card-content>
                 <p style="font-size:0.7rem;">Autor: <span>{{livro.autor}}</span></p>
 
-                <span style="float:right;">
-                    <button matTooltip="Add carrinho" mat-icon-button (click)="addToCart(livro)">
-                        <mat-icon>add_shopping_cart</mat-icon>
-                    </button>
-                </span>
+                <div class="row">
+
+                    <span style="font-size:0.9rem" fxFlex="80" fxLayoutAlign="start center">{{livro.precoUnitario |
+                        currency: 'BRL'}}</span>
+
+                    <span style="float:right;">
+                        <button matTooltip="Add carrinho" mat-icon-button (click)="addToCart(livro)">
+                            <mat-icon>add_shopping_cart</mat-icon>
+                        </button>
+                    </span>
+                </div>
+
+
+
 
             </mat-card>
         </ng-container>
