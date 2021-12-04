@@ -1,9 +1,9 @@
+import { BookService } from './../book/book.service';
 import { Component, OnInit } from '@angular/core';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { CartService } from '../cart/cart.service';
 
 import { Livro } from './../../models';
-import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -16,14 +16,16 @@ export class HomeComponent implements OnInit {
   livros = <Livro[]>{}
 
   constructor(
-    private homeService: HomeService,
+    private bookService: BookService,
     private cartService: CartService,
     private snackbar: SnackbarService) { }
 
   ngOnInit(): void {
 
+    //testar comunicao
+
     //this.livros$ = this.service.fetchLivros();
-    this.homeService.fetchLivros().subscribe({
+    this.bookService.fetchLivros().subscribe({
       next: (dados) => { this.livros = dados },
       error: (error) => { this.snackbar.showMessage('erro ao carregar livros', true); console.log(error) }
     }

@@ -1,5 +1,9 @@
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +14,14 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder,) { }
+  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService, private snackbar: SnackbarService) { }
 
   ngOnInit(): void {
 
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      remember_me: [false],
+
     });
   }
 
@@ -29,11 +33,17 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  get rememberMe() {
-    return this.loginForm.get('remember_me');
-  }
 
   login() {
     console.log('login');
+    this.auth.login(this.username?.value, this.password?.value)
+      .pipe(filter(authenticated => authenticated))
+      .subscribe({
+        next: () => { this.router.navigateByUrl('/cart') },
+        error: (error) => { this.snackbar.showMessage('Credenciais invalidas, entre com usuario e senha corretos', true, 10); }
+      }
+
+
+      )
   }
 }

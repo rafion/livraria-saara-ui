@@ -1,3 +1,4 @@
+import { BookComponent } from './book/book.component';
 import { RegisterComponent } from './sessions/register/register.component';
 import { LoginComponent } from './sessions/login/login.component';
 import { AuthLayoutComponent } from './../theme/auth-layout/auth-layout.component';
@@ -17,6 +18,9 @@ const routes: Routes = [
       },
       {
         path: 'cart', component: CartComponent,
+      },
+      {
+        path: 'book', component: BookComponent,
       },
 
       {
