@@ -12,8 +12,6 @@ export class BookService {
 
   //private querySearch = new EventEmitter<string>();//testar comunicação
 
-
-
   apiUrl = environment.SERVER_ORIGIN;
 
   constructor(protected http: HttpClient) { }
