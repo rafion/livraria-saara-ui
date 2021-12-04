@@ -28,7 +28,6 @@ export class BookService {
     if (title != 'all') {
       const params = new HttpParams()
         .set('titulo', title)
-      //return this.http.get<Livro[]>(`${this.apiUrl}/livros/filter?titulo`);
       return this.http.get<Livro[]>(`${this.apiUrl}/livros/filter?${params}`).pipe(take(1));
     }
     return this.http.get<Livro[]>(`${this.apiUrl}/livros`).pipe(take(1));

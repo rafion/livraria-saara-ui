@@ -1,3 +1,4 @@
+import { PaymentComponent } from './payment/payment.component';
 import { BookComponent } from './book/book.component';
 import { RegisterComponent } from './sessions/register/register.component';
 import { LoginComponent } from './sessions/login/login.component';
@@ -21,6 +22,9 @@ const routes: Routes = [
       },
       {
         path: 'book', component: BookComponent,
+      },
+      {
+        path: 'payment', component: PaymentComponent,
       },
 
       {

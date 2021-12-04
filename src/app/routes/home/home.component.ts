@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   // livros = <Livro[]>{};
   livros$: Observable<Livro[]>;
   subscription: Subscription;
-  queryHeader: string;
+  //queryHeader: string;
   private searchTerms = new Subject<string>();
 
   constructor(
@@ -33,16 +33,13 @@ export class HomeComponent implements OnInit {
     this.getQuery(); //paga do component header
     this.getBooksByTitle(); //trata a informação para evitar requisições desenecessarias
 
-    // inserir resete na busca
-
   }
 
   getQuery() {
     this.subscription = this.headerService.query$
       .subscribe({
         next: (query) => {
-          (query != null ? this.queryHeader = query : this.queryHeader = ''),
-            console.log(query), this.searchSubject(this.queryHeader)
+          (query != null ? this.searchSubject(query) : null)
         },
         error: (erro) => { console.log(erro) }
       }
@@ -55,7 +52,6 @@ export class HomeComponent implements OnInit {
   }
 
   getBooksByTitle() {
-
     this.livros$ = this.searchTerms.pipe(
       map(value => value.trim()),
       filter(value => value.length > 2),
@@ -68,6 +64,7 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  /*
   search(query: string) {
     console.log('searchFromHeader', this.queryHeader)
     if (this.queryHeader) {
@@ -76,6 +73,7 @@ export class HomeComponent implements OnInit {
 
     }
   }
+  */
 
   fetchLivros(title?: string) {
     this.livros$ = this.bookService.fetchLivros(title); /*.subscribe({
