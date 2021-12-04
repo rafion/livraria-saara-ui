@@ -1,3 +1,4 @@
+import { take } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -23,10 +24,14 @@ export class BookService {
   }
 
   fetchLivros(title?: string) {
-
-    const params = new HttpParams()
-      .set('titulo', title)
-    return this.http.get<Livro[]>(`${this.apiUrl}/livros/filter?titulo`);
+    //melhorar para quando não tem title
+    if (title != 'all') {
+      const params = new HttpParams()
+        .set('titulo', title)
+      //return this.http.get<Livro[]>(`${this.apiUrl}/livros/filter?titulo`);
+      return this.http.get<Livro[]>(`${this.apiUrl}/livros/filter?${params}`).pipe(take(1));
+    }
+    return this.http.get<Livro[]>(`${this.apiUrl}/livros`).pipe(take(1));
   }
 
 }

@@ -11,33 +11,22 @@ import { debounceTime, distinctUntilChanged, filter, map, startWith, switchMap, 
 })
 export class HeaderComponent implements OnInit {
 
-  private searchQuery = new Subject<string>();
+  query: string;
+
   queryField = new FormControl();
+
 
   constructor(private headerService: HeaderService) { }
 
   ngOnInit(): void {
-    this.search();
-  }
-
-  searchBook(title: string): void {
-    this.searchQuery.next(title);
-  }
-
-  search() {
-
-    this.searchQuery.pipe(
-      map(value => value.trim()),
-      filter(value => value.length > 2),
-      debounceTime(400),
-      distinctUntilChanged(),
-      tap(value => console.log(value)),
-      startWith(''),
-      tap((value) => this.headerService.changeNav(value))
-
-
-    );
 
   }
+
+  searchBook(title: string) {
+    this.headerService.changeNav(title);
+
+  }
+
+
 
 }

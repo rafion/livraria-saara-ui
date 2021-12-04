@@ -12,7 +12,6 @@ export class HeaderService {
 
   changeNav(query: string) {
     this._querySearch.next(query);
-    console.log(query);
   }
 
 }
