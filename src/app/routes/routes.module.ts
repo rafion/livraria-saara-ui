@@ -8,10 +8,11 @@ import { HomeComponent } from './home/home.component';
 import { RoutesRoutingModule } from './routes-routing.module';
 import { SessionsModule } from './sessions/sessions.module';
 import { PaymentComponent } from './payment/payment.component';
+import { AccountComponent } from './account/account.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, CartComponent, BookComponent, PaymentComponent],
+  declarations: [HomeComponent, CartComponent, BookComponent, PaymentComponent, AccountComponent],
   imports: [
     CommonModule,
     SessionsModule,

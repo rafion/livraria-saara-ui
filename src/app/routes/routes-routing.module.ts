@@ -1,3 +1,4 @@
+import { AccountComponent } from './account/account.component';
 import { PaymentComponent } from './payment/payment.component';
 import { BookComponent } from './book/book.component';
 import { RegisterComponent } from './sessions/register/register.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'book', component: BookComponent },
       { path: 'payment', component: PaymentComponent },
+      { path: 'account', component: AccountComponent },
       { path: 'sessions', loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsModule) },
     ]
   },

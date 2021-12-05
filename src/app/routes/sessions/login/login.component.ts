@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.username?.value, this.password?.value)
       .pipe(filter(authenticated => authenticated))
       .subscribe({
-        next: () => { this.router.navigateByUrl('/cart') },
+        next: (response) => { this.router.navigateByUrl('/home'), console.log(response) },
         error: (error) => { this.snackbar.showMessage('Credenciais invalidas, entre com usuario e senha corretos', true, 10); }
       }
 

@@ -38,7 +38,9 @@ export interface ItemPedido {
     precoUnitario: number;
     precoTotal: number;
 }
-export interface Cliente {
+
+export interface User {
+    id?: number;
     username: string;
     password: string;
     nome: string;
