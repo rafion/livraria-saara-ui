@@ -1,8 +1,11 @@
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { debounceTime, tap } from 'rxjs/operators';
+
+import { User } from './../../models';
+import { AuthService } from './../../routes/sessions/auth.service';
 import { HeaderService } from './header.service';
-import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, startWith, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -15,10 +18,23 @@ export class HeaderComponent implements OnInit {
 
   queryField = new FormControl();
 
+  user = <User>{};
 
-  constructor(private headerService: HeaderService) { }
+
+  constructor(private headerService: HeaderService,
+    private auth: AuthService,
+    private cdr: ChangeDetectorRef,
+    private router: Router) { }
 
   ngOnInit(): void {
+
+    this.auth
+      .user()
+      .pipe(
+        tap(user => (this.user = user)),
+        debounceTime(10)
+      )
+      .subscribe(() => this.cdr.detectChanges());
 
   }
 
@@ -27,6 +43,12 @@ export class HeaderComponent implements OnInit {
 
   }
 
-
+  logout() {
+    console.log('logout');
+    this.auth.logout();
+    this.router.navigateByUrl('/home');
+    this.user = <User>{};
+    this.user.nome = '';
+  }
 
 }
