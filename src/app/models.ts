@@ -59,3 +59,4 @@ export interface Endereco {
     estado: string;
     bairro: string;
 }
+

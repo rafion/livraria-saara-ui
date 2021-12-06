@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { MeioPagamento } from './../../models';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -12,8 +13,8 @@ export class PaymentService {
 
   constructor(protected http: HttpClient) { }
 
-  listAll() {
-    return this.http.get<MeioPagamento>(`${this.apiUrl}/meiosPagamento`)
+  listAll(): Observable<MeioPagamento[]> {
+    return this.http.get<MeioPagamento[]>(`${this.apiUrl}/meiosPagamento`)
   }
 
 }
