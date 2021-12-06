@@ -24,9 +24,11 @@ export class HeaderComponent implements OnInit {
   constructor(private headerService: HeaderService,
     private auth: AuthService,
     private cdr: ChangeDetectorRef,
-    private router: Router) { }
+    public router: Router) { }
 
   ngOnInit(): void {
+
+
 
     this.auth
       .user()
@@ -49,6 +51,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/home');
     this.user = <User>{};
     this.user.nome = '';
+
   }
 
 }
