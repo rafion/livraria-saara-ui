@@ -1,17 +1,18 @@
-import { SharedModule } from './../shared/shared.module';
-import { MaterialModule } from './../material.module';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { HomeComponent } from './home/home.component';
-import { SessionsModule } from './sessions/sessions.module';
+import { SharedModule } from './../shared/shared.module';
+import { BookComponent } from './book/book.component';
 import { CartComponent } from './cart/cart.component';
+import { HomeComponent } from './home/home.component';
 import { RoutesRoutingModule } from './routes-routing.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { SessionsModule } from './sessions/sessions.module';
+import { PaymentComponent } from './payment/payment.component';
+import { AccountComponent } from './account/account.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, CartComponent],
+  declarations: [HomeComponent, CartComponent, BookComponent, PaymentComponent, AccountComponent],
   imports: [
     CommonModule,
     SessionsModule,

@@ -1,3 +1,5 @@
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -10,15 +12,42 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private snackbar: SnackbarService) {
+
+  }
+
+  ngOnInit(): void {
     this.registerForm = this.fb.group({
+      name: ['', [Validators.required]],
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       confirmPassword: ['', [this.confirmValidator]],
     });
   }
 
-  ngOnInit(): void {
+  get name() {
+    return this.registerForm.get('name');
+  }
+
+  get username() {
+    return this.registerForm.get('username');
+  }
+
+  get password() {
+    return this.registerForm.get('password');
+  }
+
+  get email() {
+    return this.registerForm.get('email');
+  }
+
+  register() {
+    this.auth.register(this.name?.value, this.username?.value, this.password?.value, this.email?.value).
+      subscribe({
+        next: (usuario) => { console.log(usuario), this.snackbar.showMessage('usuario registrado com sucesso!') },
+        error: (error) => { console.log(error), this.snackbar.showMessage('erro ao cadastrar usuario', true) }
+      })
   }
 
   confirmValidator = (control: FormControl): { [k: string]: boolean } => {
@@ -29,5 +58,7 @@ export class RegisterComponent implements OnInit {
     }
     return {};
   };
+
+
 
 }
