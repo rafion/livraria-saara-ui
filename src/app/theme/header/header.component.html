@@ -16,7 +16,8 @@
     <span class="spacer"></span>
 
     <button mat-icon-button matTooltip="Carrinho" routerLink="/cart">
-        <mat-icon>shopping_cart</mat-icon>
+        <mat-icon [matBadge]="quantidadeItens" [matBadgeHidden]="hiddenBadge" matBadgeColor="accent">shopping_cart
+        </mat-icon>
     </button>
 
 

@@ -1,3 +1,4 @@
+import { CartService } from './../../routes/cart/cart.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -19,10 +20,13 @@ export class HeaderComponent implements OnInit {
   queryField = new FormControl();
 
   user = <User>{};
+  hiddenBadge = false;
 
 
-  constructor(private headerService: HeaderService,
+  constructor(
+    private headerService: HeaderService,
     private auth: AuthService,
+    private cartService: CartService,
     private cdr: ChangeDetectorRef,
     public router: Router) { }
 
@@ -52,6 +56,14 @@ export class HeaderComponent implements OnInit {
     this.user = <User>{};
     this.user.nome = '';
 
+  }
+
+  toggleBadgeVisibility() {
+    this.hiddenBadge = !this.hiddenBadge;
+  }
+
+  get quantidadeItens() {
+    return this.cartService.getItens().length;
   }
 
 }
