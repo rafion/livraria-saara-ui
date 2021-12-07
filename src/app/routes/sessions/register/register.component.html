@@ -13,7 +13,7 @@
                 <mat-label>Nome completo</mat-label>
                 <input matInput formControlName="name" required>
                 <mat-error *ngIf="registerForm.get('name').invalid">
-                    {{'validations.required'}}
+                    O nome é obrigatorio
                 </mat-error>
             </mat-form-field>
 
@@ -21,7 +21,7 @@
                 <mat-label>username</mat-label>
                 <input matInput formControlName="username" required>
                 <mat-error *ngIf="registerForm.get('username').invalid">
-                    {{'validations.required'}}
+                    username é obrigatório
                 </mat-error>
             </mat-form-field>
 
@@ -29,7 +29,7 @@
                 <mat-label>email</mat-label>
                 <input matInput formControlName="email" required>
                 <mat-error *ngIf="registerForm.get('email').invalid">
-                    {{'validations.required'}}
+                    E-mail invalido
                 </mat-error>
             </mat-form-field>
 
@@ -37,7 +37,7 @@
                 <mat-label>password</mat-label>
                 <input matInput type="password" formControlName="password" required>
                 <mat-error *ngIf="registerForm.get('password').invalid">
-                    {{'validations.required' }}
+                    password é obrigatório
                 </mat-error>
             </mat-form-field>
 
@@ -45,7 +45,7 @@
                 <mat-label>confirme password</mat-label>
                 <input matInput type="password" formControlName="confirmPassword" required>
                 <mat-error *ngIf="registerForm.get('confirmPassword').hasError('required')">
-                    {{'validations.required'}}
+                    password invalido
                 </mat-error>
 
             </mat-form-field>
