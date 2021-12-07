@@ -1,22 +1,30 @@
-<mat-card class="example-card">
-  <mat-card-title-group>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Medium</mat-card-subtitle>
-    <img mat-card-md-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-  </mat-card-title-group>
-  <mat-card-content>
-    cão
-  </mat-card-content>
-</mat-card>
+<div class="booton-label">
+  <button mat-raised-button color="primary" routerLink="/payment">Comprar</button>
+</div>
 
 
-<mat-divider></mat-divider>
-<section>
-  <div class="example-label"></div>
-  <div class="example-button-row">
-    <button mat-raised-button routerLink="/payment">Comprar</button>
-    <button mat-raised-button>Remover do carrinho</button>
+<ng-container *ngFor="let livro of itens" style="margin: 0.5%;">
 
-  </div>
-</section>
-<mat-divider></mat-divider>
+  <mat-card class="mat-card mat-elevation-z4">
+    <mat-card-title-group>
+      <mat-card-title>{{livro.titulo}}</mat-card-title>
+      <mat-card-subtitle>{{livro.autor}}</mat-card-subtitle>
+      <mat-card-subtitle>{{livro.precoUnitario | currency: 'BRL'}}</mat-card-subtitle>
+
+    </mat-card-title-group>
+    <mat-card-content>
+      <img src={{livro.url_img}} class="card-image">
+    </mat-card-content>
+
+    <div align="end">
+      <mat-card-actions>
+        <button mat-icon-button color="warn" matTooltip="Excluir" (click)="renoveToCart(livro)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </div>
+
+  </mat-card>
+
+
+</ng-container>

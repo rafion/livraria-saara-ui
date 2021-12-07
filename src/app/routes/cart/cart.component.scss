@@ -1,4 +1,23 @@
-.example-card {
-    max-width: 400px;
+.mat-card {
+  //display: flex;
+    max-width: 30%;
     margin-bottom: 8px;
+    padding: 3px;
   }
+
+  .booton-label {
+    margin: 8px;
+  }
+
+  .card-image{
+    width: 140px;
+    margin: 0.5em;
+  padding: 0.5em;
+  }
+
+  mat-card-actions{
+    padding: 0px;
+    margin-bottom: 3px;
+  }
+
+ 

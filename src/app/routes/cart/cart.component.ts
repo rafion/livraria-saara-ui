@@ -1,3 +1,4 @@
+import { Livro } from 'src/app/models';
 import { CartService } from './cart.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,11 +13,15 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.itens);
+    //console.log(this.itens);
   }
 
   get itens() {
     return this.cartService.getItens();
+  }
+
+  renoveToCart(livro: Livro) {
+    this.cartService.removeToCart(livro);
   }
 
 }
