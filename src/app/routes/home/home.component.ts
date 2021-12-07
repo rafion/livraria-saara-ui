@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
 
   addToCart(livro: Livro) {
     this.cartService.addToCart(livro);
-    this.snackbar.showMessage(`Livro: ${livro.titulo}, foi adcionado ao carrinho`);
+    this.snackbar.showMessage(`Livro: ${livro.titulo}, foi adcionado ao carrinho`, false, 2);
   }
 
   ngOnDestroy() {

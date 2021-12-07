@@ -1,7 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-
+export interface DialogData {
+  title: string;
+  message: string;
+}
 
 @Component({
   selector: 'app-inform-dialog',
@@ -10,17 +13,21 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class InformDialogComponent implements OnInit {
 
-  title = 'Inform';
+  dialogData = <DialogData>{};
   message = 'Pagamento efetuado com Sucesso';
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, private dialogRef: MatDialogRef<InformDialogComponent>) {
     if (data) {
-      this.title = data.title || this.title;
-      this.message = data.message || this.message;
+      this.dialogData.message = data.message || this.message;
+      this.dialogData.title = data.title || '';
     }
   }
 
   ngOnInit(): void {
+  }
+
+  onConfirmClick(): void {
+    this.dialogRef.close(true);
   }
 
 }

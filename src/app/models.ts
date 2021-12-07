@@ -22,7 +22,7 @@ export interface Pagamento {
 
 export interface Pedido {
     id?: number;
-    valortotal: number;
+    valorTotal: number;
     clienteId: number;
     status?: string;
     itens: ItemPedido[];

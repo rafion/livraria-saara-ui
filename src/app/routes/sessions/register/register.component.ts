@@ -45,8 +45,8 @@ export class RegisterComponent implements OnInit {
   register() {
     this.auth.register(this.name?.value, this.username?.value, this.password?.value, this.email?.value).
       subscribe({
-        next: (usuario) => { console.log(usuario), this.snackbar.showMessage('usuario registrado com sucesso!') },
-        error: (error) => { console.log(error), this.snackbar.showMessage('erro ao cadastrar usuario', true) }
+        next: (usuario) => { console.log(usuario), this.snackbar.showMessage('usuario registrado com sucesso! Efetue o login') },
+        error: (error) => { console.log(error), this.snackbar.showMessage(error.error, true) }
       })
   }
 
