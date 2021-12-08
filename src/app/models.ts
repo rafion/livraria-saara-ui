@@ -9,6 +9,7 @@ export interface Livro {
     url_img: string;
 }
 
+
 export interface MeioPagamento {
     id?: number;
     nome: number;

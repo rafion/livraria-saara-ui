@@ -3,18 +3,18 @@
     <div>
         <mat-card class="card-account mat-elevation-z4">
             <mat-card-title>Dados Cadastrais</mat-card-title>
-            <mat-card-subtitle>Nome:</mat-card-subtitle>
+            <mat-card-subtitle>Nome: {{user.nome}}</mat-card-subtitle>
             <mat-divider></mat-divider>
             <h1>Endereco:</h1>
-            <mat-card-subtitle>Estado:</mat-card-subtitle>
-            <mat-card-subtitle>Cidade:</mat-card-subtitle>
-            <mat-card-subtitle>Bairro:</mat-card-subtitle>
-            <mat-card-subtitle>Logradouro:</mat-card-subtitle>
-            <mat-card-subtitle>Numero:</mat-card-subtitle>
+            <mat-card-subtitle>Estado:{{endereco.estado}}</mat-card-subtitle>
+            <mat-card-subtitle>Cidade:{{endereco.municipio}}</mat-card-subtitle>
+            <mat-card-subtitle>Bairro:{{endereco.bairro}}</mat-card-subtitle>
+            <mat-card-subtitle>Logradouro:{{endereco.logradouro}}</mat-card-subtitle>
+            <mat-card-subtitle>Numero:{{endereco.numero}}</mat-card-subtitle>
 
             <mat-card-actions>
                 <div class="booton-label">
-                    <button mat-button color="primary">Cadastrar Endereco</button>
+                    <button mat-button (click)="openEnderecoDialog()" color="primary">Cadastrar Endereco</button>
                 </div>
             </mat-card-actions>
         </mat-card>

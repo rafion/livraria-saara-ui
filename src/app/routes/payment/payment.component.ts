@@ -1,3 +1,4 @@
+import { PedidoService } from './../../shared/services/pedido.service';
 import { Router } from '@angular/router';
 import { InformDialogComponent } from './../../shared/componets/inform-dialog/inform-dialog.component';
 import { Observable } from 'rxjs';
@@ -24,6 +25,7 @@ export class PaymentComponent implements OnInit {
 
   constructor(
     private paymentService: PaymentService,
+    private pedidoService: PedidoService,
     private authService: AuthService,
     private cartService: CartService,
     private dialog: MatDialog,
@@ -60,7 +62,7 @@ export class PaymentComponent implements OnInit {
     this.pedido.valorTotal = this.total;
     this.pedido.status = 'CONFIRMADO';
     this.setItensPedido();
-    this.paymentService.savePedido(this.pedido).subscribe({
+    this.pedidoService.savePedido(this.pedido).subscribe({
       next: (pedido) => {
         this.openDialog("Pagamento efetuado com sucesso", `Pedido n° ${pedido.id},\n Total: ${pedido.valorTotal}`)
           , console.log('pedido salvo', pedido),
