@@ -6,8 +6,8 @@
     <span class="spacer"></span>
 
     <mat-form-field *ngIf="router.url == '/home'">
-        <mat-label>search</mat-label>
-        <input matInput placeholder="search" #search type="text" [formControl]="queryField"
+        <mat-label>Pesquisar</mat-label>
+        <input matInput #search type="text" [formControl]="queryField"
             (input)="searchBook(search.value)">
         <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>

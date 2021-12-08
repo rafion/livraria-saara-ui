@@ -62,7 +62,18 @@ export class PaymentComponent implements OnInit {
     this.pedido.valorTotal = this.total;
     this.pedido.status = 'CONFIRMADO';
     this.setItensPedido();
-    this.pedidoService.savePedido(this.pedido).subscribe({
+
+    if (this.pedido.itens == null || this.pedido.itens.length == 0) {
+      alert("Seu carrinho está vazio.");
+      return;
+    }
+
+    if (this.pedido.pagamento == null) {
+      alert("Escolha um meio de pagamento.");
+      return;
+    }
+
+    this.paymentService.savePedido(this.pedido).subscribe({
       next: (pedido) => {
         this.openDialog("Pagamento efetuado com sucesso", `Pedido n° ${pedido.id},\n Total: ${pedido.valorTotal}`)
           , console.log('pedido salvo', pedido),
@@ -75,6 +86,7 @@ export class PaymentComponent implements OnInit {
     this.cartService.clearItens();
 
   }
+
 
   get itensCart() {
     return this.cartService.getItens();
