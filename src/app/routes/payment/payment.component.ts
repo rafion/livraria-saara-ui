@@ -56,20 +56,18 @@ export class PaymentComponent implements OnInit {
   }
 
   pagar() {
-    if (this.pedido.pagamento == null) {
-      alert("Escolha um meio de pagamento.");
-      return;
-    }
-
     this.pedido.clienteId = this.user.id;
     this.pedido.valorTotal = this.total;
     this.pedido.status = 'CONFIRMADO';
     this.setItensPedido();
 
-    if (this.pedido.itens == null) {
-      console.log(this.pedido);
-      console.log(this.pedido.itens);
+    if (this.pedido.itens == null || this.pedido.itens.length == 0) {
       alert("Seu carrinho está vazio.");
+      return;
+    }
+
+    if (this.pedido.pagamento == null) {
+      alert("Escolha um meio de pagamento.");
       return;
     }
 
