@@ -1,6 +1,8 @@
+import { take } from 'rxjs/operators';
+import { Endereco } from './../../models';
 import { User } from 'src/app/models';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 
@@ -16,5 +18,11 @@ export class AccountService {
   updateAccount(user: User) {
 
     return this.http.put<User>(`${this.apiUrl}/clientes/${user.id}`, user);
+  }
+
+  updateEndereco(clienteId: number, endereco: Endereco) {
+    const params = new HttpParams()
+      .set('clienteId', clienteId)
+    return this.http.put<User>(`${this.apiUrl}/clientes/updateEndereco?${params}`, endereco).pipe(take(1));
   }
 }

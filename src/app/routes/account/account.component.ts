@@ -1,3 +1,4 @@
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { AccountService } from './account.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,7 +24,8 @@ export class AccountComponent implements OnInit {
     private pedidoService: PedidoService,
     private accountService: AccountService,
     private dialog: MatDialog,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private snackBar: SnackbarService) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -38,7 +40,7 @@ export class AccountComponent implements OnInit {
   getUser() {
     this.authService.user().subscribe(
       {
-        next: (user) => this.user = user,
+        next: (user) => { this.user = user, this.endereco = user.endereco || <Endereco>{} },
         error: (error) => console.log(error)
       }
     )
@@ -71,8 +73,10 @@ export class AccountComponent implements OnInit {
         console.log('endereco adcionado');
         console.log(this.endereco);
 
-        this.accountService.updateAccount(this.user).subscribe({
-          next: (response) => console.log(response),
+        //erro ao atualizar cliente com endereco
+        //this.user.password = '1234'; //gambiarra braba....
+        this.accountService.updateEndereco(this.user.id, this.endereco).subscribe({
+          next: (response) => { console.log(response), this.snackBar.showMessage('Endereco atualizado com sucesso!') },
           error: (error) => console.log(error)
         })
       }
