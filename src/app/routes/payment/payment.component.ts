@@ -56,6 +56,11 @@ export class PaymentComponent implements OnInit {
   }
 
   pagar() {
+    if (this.pedido.itens == null) {
+      alert("Seu carrinho está vazio.");
+      return;
+    }
+
     this.pedido.clienteId = this.user.id;
     this.pedido.valorTotal = this.total;
     this.pedido.status = 'CONFIRMADO';
