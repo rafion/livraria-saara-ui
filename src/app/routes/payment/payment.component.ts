@@ -56,8 +56,8 @@ export class PaymentComponent implements OnInit {
   }
 
   pagar() {
-    if (this.pedido.itens == null) {
-      alert("Seu carrinho está vazio.");
+    if (this.pedido.pagamento == null) {
+      alert("Escolha um meio de pagamento.");
       return;
     }
 
@@ -65,6 +65,14 @@ export class PaymentComponent implements OnInit {
     this.pedido.valorTotal = this.total;
     this.pedido.status = 'CONFIRMADO';
     this.setItensPedido();
+
+    if (this.pedido.itens == null) {
+      console.log(this.pedido);
+      console.log(this.pedido.itens);
+      alert("Seu carrinho está vazio.");
+      return;
+    }
+
     this.paymentService.savePedido(this.pedido).subscribe({
       next: (pedido) => {
         this.openDialog("Pagamento efetuado com sucesso", `Pedido n° ${pedido.id},\n Total: ${pedido.valorTotal}`)
