@@ -14,6 +14,11 @@
     min-height: 30em;
 }
 
+.mat-card:hover {
+  border: 2px solid #9f74c2; 
+  border-radius: 4px 3px 6px / 2px 4px;
+}
+
 .mat-card-title{
     padding-left: 5px; 
     text-align: center;
